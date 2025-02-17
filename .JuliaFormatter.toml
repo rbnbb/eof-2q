@@ -1,0 +1,4 @@
+style = "blue"
+margin = 92
+format_docstrings = true
+join_lines_based_on_source = true
