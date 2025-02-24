@@ -12,35 +12,6 @@ function my_blue_palette()
     return cgrad([col_beg, col_end])
 end
 
-function a_eaee_x_application()
-    plot_dir = homedir() * "/physics/data/eof-2q/"
-
-    my_plot_defaults()
-
-    all_plots = []
-    for state in [bell00m, bell00p, bell01m, bell01p]
-        psi = state.v
-        noise = PhaseFlip(0.08)
-        fname = "eaeeX#_2q_$(state.name)_$noise.png"
-        p = plt_eaees_x_application(
-            psi, noise, 5; plot_path=plot_dir * fname, state=state.name
-        )
-        push!(all_plots, p)
-        savefig(plot_dir * fname)
-
-        noise = AmplitudeDamping(0.2)
-        fname = "eaeeX#_2q_$(state.name)_$noise.png"
-        p = plt_eaees_x_application(
-            psi, noise, 8; plot_path=plot_dir * fname, state=state.name
-        )
-        push!(all_plots, p)
-        # savefig(plot_dir * fname)
-    end
-    # p = plot(all_plots..., layout=(2, 4))
-    # savefig(p, plot_dir * "bell_states_eaee.png")
-    # display(p)
-end
-
 function NU_analytic4pf(args; p=0.1, s=0.1)
     theta, phi = args
     f1 = (1 - p) * cos(theta)^2 + p * sin(theta)^2
